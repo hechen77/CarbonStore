@@ -1,0 +1,4 @@
+# 忽略 unpackage 文件
+\unpackage\
+# 忽略 _MACOSX 文件
+\_MACOSX\
