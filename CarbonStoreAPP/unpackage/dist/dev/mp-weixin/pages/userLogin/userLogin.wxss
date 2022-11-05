@@ -1,0 +1,13 @@
+.content {
+  width: 90%;
+  margin: 0 auto;
+}
+.content .Logo {
+  height: 300px;
+  background-color: green;
+}
+.content .dataForm {
+  margin-top: 20px;
+  border: 1px solid red;
+}
+

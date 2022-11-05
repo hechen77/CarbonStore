@@ -12,6 +12,12 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	/*每个页面公共css */
+	@import './uni_modules/uview-ui/index.scss';
+
+	.status_bar {
+		height: var(--status-bar-height);
+		width: 100%;
+	}
 </style>

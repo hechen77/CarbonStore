@@ -1,14 +1,12 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var appApi = require('./routes/app/index');
-
+import express from "express";
+import * as path from "path";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import appApi from "./routes/app/index.js"
 
 var app = express();
 
+const __dirname = path.resolve();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -29,4 +27,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+export default app;

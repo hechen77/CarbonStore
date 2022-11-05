@@ -1,0 +1,1 @@
+<view class="content"><view class="status_bar"></view><button data-event-opts="{{[['tap',[['goLogin']]]]}}" bindtap="__e">登录页</button></view>
