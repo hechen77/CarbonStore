@@ -1,9 +1,11 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/userLogin/userLogin"
+    "pages/index/index"
   ],
   "subPackages": [],
-  "window": {},
+  "window": {
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
   "usingComponents": {}
 }

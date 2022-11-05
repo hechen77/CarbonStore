@@ -14,7 +14,7 @@ router.get('/user/login', function(req, res){
     // 获取请求数据时携带的参数：手机号 账户密码
     var phone = req.query.phone,
     password = req.query.password;
-    if(!phone || !password){
+    if(!phone || !password){ //判断手机号和登陆密码是否为空
         var message = !phone ? "请输入手机号！" : "请输入密码！"
         res.status(400).send({"code":202,message});
     }else{

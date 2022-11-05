@@ -24,8 +24,15 @@ var user ={
             }
         })
     },
-    
-    UserSignUp:function (phone,password,){
+    /**
+     * @author 李贺辰
+     * @description APP用户注册
+     * @param {number} phone 用户手机号
+     * @param {string} password 用户登录密码
+     * @param {string} verifyCode 验证码
+     * @param {Object} res API返回数据方法
+     * */
+    UserSignUp:function (phone,password,verifyCode,res){
         console.log(nanoid())
     }
 }

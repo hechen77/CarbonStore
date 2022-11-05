@@ -1,30 +1,52 @@
 <template>
 	<view class="content">
-		<view class="status_bar">
-			<!-- 这里是状态栏 -->
-		</view>
-		<button @click="goLogin()">登录页</button>
+		<view class="status_bar"></view>
+		<van-button type="info" @click="goLogin">登录页</van-button>
 	</view>
 </template>
 
 <script>
 	export default {
 		data() {
-			return {}
+			return {
+				title: 'Hello'
+			}
 		},
 		onLoad() {
 
 		},
 		methods: {
 			goLogin() {
-				uni.navigateTo({
-					url: "/pages/userLogin/userLogin"
-				})
+				uni.navigateTo({})
 			}
-
 		}
 	}
 </script>
 
 <style>
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.logo {
+		height: 200rpx;
+		width: 200rpx;
+		margin-top: 200rpx;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 50rpx;
+	}
+
+	.text-area {
+		display: flex;
+		justify-content: center;
+	}
+
+	.title {
+		font-size: 36rpx;
+		color: #8f8f94;
+	}
 </style>

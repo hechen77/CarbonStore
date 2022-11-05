@@ -3,20 +3,18 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"app-plus": { //app配置自定义导航
-					"titleNView": false //app禁止使用原神导航
-				}
-			}
-		},
-		{
-			"path": "pages/userLogin/userLogin",
-			"style": {
-				"app-plus": { //app配置自定义导航
-					"titleNView": false //app禁止使用原神导航
+				"app-plus": {
+					"titleNView": false
+				},
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant/dist/button/index"
 				}
 			}
 		}
 	],
-	"globalStyle": {},
+	"globalStyle": {
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
 	"uniIdRouter": {}
 }

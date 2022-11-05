@@ -12,10 +12,11 @@
 	}
 </script>
 
-<style lang="scss">
+<style>
 	/*每个页面公共css */
-	@import './uni_modules/uview-ui/index.scss';
-
+	@import "/wxcomponents/vant/dist/common/index.wxss";
+</style>
+<style lang="scss">
 	.status_bar {
 		height: var(--status-bar-height);
 		width: 100%;
