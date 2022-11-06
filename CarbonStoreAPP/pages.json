@@ -6,15 +6,28 @@
 				"app-plus": {
 					"titleNView": false
 				},
-				"usingComponents": {
-					"van-button": "/wxcomponents/vant/dist/button/index"
-				}
+				"usingComponents": {}
 			}
+		}, {
+			"path": "pages/userLogin/userLogin",
+			"style": {
+				"app-plus": {
+					"titleNView": false
+				},
+				"usingComponenets": {}
+			}
+
 		}
 	],
 	"globalStyle": {
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	},
-	"uniIdRouter": {}
+		"navigationStyle": "custom",
+		"usingComponents": {
+			"van-button": "/wxcomponents/vant/dist/button/index",
+			"van-tabbar": "/wxcomponents/vant/dist/tabbar/index",
+			"van-tabbar-item": "/wxcomponents/vant/dist/tabbar-item/index",
+			"van-field": "/wxcomponents/vant/dist/field/index",
+			"van-cell": "/wxcomponents/vant/dist/cell/index",
+			"van-cell-group": "/wxcomponents/vant/dist/cell-group/index"
+		}
+	}
 }

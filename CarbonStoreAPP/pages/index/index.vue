@@ -2,6 +2,14 @@
 	<view class="content">
 		<view class="status_bar"></view>
 		<van-button type="info" @click="goLogin">登录页</van-button>
+		<view>
+			<van-tabbar v-model="active" active-color="#ff0000" @change="tabClick($event)">
+				<van-tabbar-item icon="home-o">标签</van-tabbar-item>
+				<van-tabbar-item icon="search">标签</van-tabbar-item>
+				<van-tabbar-item icon="friends-o">标签</van-tabbar-item>
+				<van-tabbar-item icon="setting-o">标签</van-tabbar-item>
+			</van-tabbar>
+		</view>
 	</view>
 </template>
 
@@ -9,7 +17,8 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: 'Hello',
+				active: 0
 			}
 		},
 		onLoad() {
@@ -17,7 +26,12 @@
 		},
 		methods: {
 			goLogin() {
-				uni.navigateTo({})
+				uni.navigateTo({
+					url: "/pages/userLogin/userLogin"
+				})
+			},
+			tabClick(e) {
+				this.active = e.detail
 			}
 		}
 	}
