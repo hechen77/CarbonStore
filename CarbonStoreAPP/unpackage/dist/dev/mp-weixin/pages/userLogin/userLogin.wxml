@@ -1,1 +1,0 @@
-<view class="contents"><view class="status_bar"></view><view class="logoView"><van-cell-group vue-id="4b9cb9fc-1" data-com-type="wx" bind:__l="__l" vue-slots="{{['default']}}"><van-field vue-id="{{('4b9cb9fc-2')+','+('4b9cb9fc-1')}}" value="{{value}}" placeholder="请输入用户名" data-com-type="wx" bind:__l="__l"></van-field></van-cell-group></view></view>
