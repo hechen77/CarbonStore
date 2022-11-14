@@ -1,0 +1,19 @@
+.pageContent.data-v-128ad569 {
+  width: 100%;
+}
+.pageContent .pageHeaderView.data-v-128ad569 {
+  width: 100%;
+  background-color: #0dc99b;
+  height: 100rpx;
+  position: fixed;
+  display: flex;
+  z-index: 199999999;
+}
+.pageContent .pageHeaderView .searchView.data-v-128ad569 {
+  width: 85%;
+  margin: auto;
+}
+.pageContent .swiperView.data-v-128ad569 {
+  padding-top: 100rpx;
+}
+

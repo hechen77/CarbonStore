@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/userLogin/userLogin",
+    "pages/userSignUp/userSignUp",
+    "pages/SearchPage/SearchPage"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTitleText": "碳中和商城"
+  },
+  "usingComponents": {}
+}
