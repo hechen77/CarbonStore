@@ -1,6 +1,7 @@
 import express from "express";
 import appSetting from "./appSet.js";
 import adminSet from "./admin.js";
+import db from "../../database/sql.js";
 
 const router = express.Router();
 
@@ -81,8 +82,79 @@ router.get("/home/modules/inlet/list", function (req, res) {
 /**
  * @author 李贺辰
  * @version 1.0.0
- * @description 获取APP首页模块入口配置
+ * @description 获取APP商品列表
  */
-router.get("/home/modules/inlet/settings", function (req, res) {});
+router.get("/app/products/list", function (req, res) {
+  let data = req.query;
+  let pageLimit = data.limit,
+    nowPage = data.nowPage;
+  adminSet.GetAllAppProductsList(res, (nowPage - 1) * pageLimit, pageLimit);
+});
+
+/**
+ * @author 李贺辰
+ * @version 1.0.0
+ * @description 获取用户类型列表
+ */
+router.get("/carbon/user/types/list", function (req, res) {
+  adminSet.GetCarbonUserType(res);
+});
+
+/**
+ * @author 李贺辰
+ * @version 1.0.0
+ * @description 获取商品类型列表
+ */
+router.get("/products/types/list", function (req, res) {
+  adminSet.GetProductType(res);
+});
+
+/**
+ * @author 李贺辰
+ * @version 1.0.0
+ * @description 获取商品购买类型列表
+ */
+router.get("/products/buy/types/list", function (req, res) {
+  adminSet.GetProductBuyType(res);
+});
+
+/**
+ * @author 李贺辰
+ * @version 1.0.0
+ * @description 获取用户列表
+ */
+router.post("/carbon/user/list", function (req, res) {
+  adminSet.GetCarbonUserList(res);
+});
+
+/**
+ * @author 李贺辰
+ * @version 1.0.0
+ * @description 商品搜索
+ */
+router.post("/app/products/list/search", function (req, res) {
+  let data = req.body;
+  let conditions = "";
+  data.name ? (conditions += ` AND name LIKE "%${data.name}%"`) : null;
+  data.sendTime
+    ? (conditions += ` AND sendTime LIKE "%${data.sendTime}%"`)
+    : null;
+  data.authorTypeName
+    ? (conditions += ` AND authorType = "${data.authorTypeName}"`)
+    : null;
+  data.typeName ? (conditions += ` AND type = "${data.typeName}"`) : null;
+  data.purchaseTypeName
+    ? (conditions += ` AND purchaseType = "${data.purchaseTypeName}"`)
+    : null;
+  data.authorName ? (conditions += ` AND author = "${data.authorName}"`) : null;
+  let pageLimit = data.limit,
+    nowPage = data.nowPage;
+  adminSet.GetAppProductsSearchList(
+    res,
+    conditions,
+    pageLimit,
+    (nowPage - 1) * pageLimit
+  );
+});
 
 export default router;

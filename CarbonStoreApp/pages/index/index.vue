@@ -5,6 +5,7 @@
 		<modulesInlet />
 		<br />
 		<productsList />
+		<u-back-top :scroll-top="scrollTop" top="240"></u-back-top>
 	</view>
 </template>
 
@@ -18,7 +19,12 @@
 	} from "../../config/config"
 	export default {
 		data() {
-			return {}
+			return {
+				scrollTop: 0
+			}
+		},
+		onPageScroll(e) {
+			this.scrollTop = e.scrollTop;
 		},
 		methods: {
 			goLogin() {
@@ -42,6 +48,6 @@
 	.HomePageView {
 		background-color: #f4f4f4;
 		width: 100%;
-		height: 100%;
+		min-height: 84.4vh;
 	}
 </style>

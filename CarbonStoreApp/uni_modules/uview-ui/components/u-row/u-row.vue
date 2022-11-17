@@ -1,10 +1,5 @@
 <template>
-	<view
-	    class="u-row"
-		ref="u-row"
-	    :style="[rowStyle]"
-	    @tap="clickHandler"
-	>
+	<view class="u-row" ref="u-row" :style="[rowStyle]" @tap="clickHandler">
 		<slot />
 	</view>
 </template>
@@ -31,7 +26,7 @@
 		mixins: [uni.$u.mpMixin, uni.$u.mixin, props],
 		data() {
 			return {
-				
+
 			}
 		},
 		computed: {
@@ -51,9 +46,9 @@
 					justifyContent: this.uJustify
 				}
 				// 通过给u-row左右两边的负外边距，消除u-col在有gutter时，第一个和最后一个元素的左内边距和右内边距造成的影响
-				if(this.gutter) {
-					style.marginLeft = uni.$u.addUnit(-Number(this.gutter)/2)
-					style.marginRight = uni.$u.addUnit(-Number(this.gutter)/2)
+				if (this.gutter) {
+					style.marginLeft = uni.$u.addUnit(-Number(this.gutter) / 2)
+					style.marginRight = uni.$u.addUnit(-Number(this.gutter) / 2)
 				}
 				return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle))
 			}
@@ -86,8 +81,9 @@
 
 <style lang="scss" scoped>
 	@import "../../libs/css/components.scss";
-	
+
 	.u-row {
 		@include flex;
+		flex-wrap: wrap;
 	}
 </style>

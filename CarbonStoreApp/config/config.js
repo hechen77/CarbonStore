@@ -1,4 +1,6 @@
-export const baseUrl = "http://localhost:3000/app";
+const serverUrl = "http://carbon.hc8.ren/app";
+const localUrl = "http://localhost:3000/app"
+export const baseUrl = localUrl;
 
 export const token = {
 	getToken(key) {
@@ -13,7 +15,6 @@ export const token = {
 }
 export const loginStatus = {
 	isLogin() {
-		console.log(getCurrentPages());
 		if (!token.getToken("token")) {
 			uni.reLaunch({
 				url: "/pages/userLogin/userLogin"

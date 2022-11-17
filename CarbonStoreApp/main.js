@@ -3,7 +3,7 @@ import App from './App'
 import Vue from 'vue'
 import uView from "@/uni_modules/uview-ui";
 import store from "@/store/index.js";
-import "@/static/icon-font/iconfont.js"
+import "@/static/icon-font/iconfont-weapp-icon.css"
 Vue.use(uView)
 Vue.prototype.$store = store
 Vue.config.productionTip = false

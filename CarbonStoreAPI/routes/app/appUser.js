@@ -49,7 +49,7 @@ var user = {
   },
   /**
    * @author 李贺辰
-   * @description 用户登录方法
+   * @description admin用户登录方法
    * @param {string} phoneNumber 用户手机号
    * @param {string} password 用户密码
    * @param {object} res API返回数据方法

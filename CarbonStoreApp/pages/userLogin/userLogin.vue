@@ -97,6 +97,7 @@
 						"password": this.pwd
 					},
 					success: res => {
+						console.log(res);
 						if (res.data.code == 200) {
 							uni.showToast({
 								title: "登陆成功！",
@@ -106,7 +107,7 @@
 							this.$store.commit("user/SET_ROLES", res.data.data);
 							this.$store.commit("user/SET_TOKEN", res.data.token);
 							token.setToken("token", res.data.token);
-							uni.reLaunch({
+							uni.switchTab({
 								url: "/pages/index/index"
 							})
 						} else {
@@ -115,6 +116,9 @@
 								icon: "none"
 							})
 						}
+					},
+					error: err => {
+						console.log(err);
 					}
 				})
 

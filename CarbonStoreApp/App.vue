@@ -22,12 +22,5 @@
 <style lang="scss">
 	/*每个页面公共css */
 	@import "@/uni_modules/uview-ui/index.scss";
-
-	.icon {
-		width: 2em;
-		height: 2em;
-		vertical-align: -0.15em;
-		fill: currentColor;
-		overflow: hidden;
-	}
+	@import "@/static/icon-font/iconfont-weapp-icon.css"
 </style>
