@@ -21,6 +21,6 @@ cd ./CarbonStore
 cd ./CarbonStoreAPI
 # 安装依赖
 npm install
-# 启动API
+# 启动API项目
 npm run serve
 ```
