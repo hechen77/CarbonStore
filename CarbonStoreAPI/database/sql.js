@@ -21,5 +21,5 @@ const localSql = {
   waitForConnections: true, // 超过最大连接时排队
   queueLimit: 0, // 排队最大数量(0 代表不做限制)
 };
-const db = mysql.createConnection(localSql);
+const db = mysql.createConnection(ServerSql);
 export default db;
