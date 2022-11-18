@@ -42,6 +42,12 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/productsInfo/productsInfo",
+			"style": {
+				"navigationStyle": "custom"
+			}
+
 		}
 	],
 	"globalStyle": {},

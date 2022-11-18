@@ -1,6 +1,6 @@
-.footerTabbar {
-  position: absolute;
-  bottom: 0;
+.HomePageView.data-v-57280228 {
+  background-color: #f4f4f4;
   width: 100%;
+  min-height: 84.4vh;
 }
 
