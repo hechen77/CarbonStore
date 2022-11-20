@@ -38,6 +38,14 @@ var appSetting = {
       });
     });
   },
+  /**
+   * @author 李贺辰
+   * @version 1.0.0
+   * @description APP配置修改
+   * @param {string} name 修改项字段名
+   * @param {string} value 修改值
+   * @param {Object} res 接口数据赶回方法
+   */
   SetAppSetting(name, value, res) {
     let sql = `UPDATE app_power_set SET value = "${value}" WHERE name = "${name}"`;
     db.query(sql, (err, result) => {
@@ -100,6 +108,12 @@ var appSetting = {
       });
     });
   },
+  /**
+   * @author 李贺辰
+   * @version 1.0.0
+   * @description 获取APP首页模块入口列表
+   * @param {Object} res 接口数据返回方法
+   */
   GetHomeModulesInletList(res) {
     var sql = `SELECT name,	title, pageUrl,	iconsUrl FROM app_home_modules_inlet WHERE status = 1`;
     db.query(sql, (err, result) => {
@@ -108,6 +122,132 @@ var appSetting = {
         return;
       }
       res.send({ code: 200, message: "success", data: result });
+    });
+  },
+  /**
+   * @author 李贺辰
+   * @version 1.0.0
+   * @description 商品信息获取
+   * @param {String} uid 商品ID
+   * @param {object} res 接口数据返回方法
+   */
+  GetOneProductsInfo(uid, res) {
+    let sql = `SELECT
+	uid,
+	name,
+	imgUrl,
+  price,
+	describes,
+	author,(
+	SELECT
+		userName 
+	FROM
+		admin_user_list AS USER 
+	WHERE
+		USER.uid = list.author 
+		AND STATUS = 1 
+	) AS authorAdminName, (
+	SELECT
+		userName 
+	FROM
+		app_user_list AS USER 
+	WHERE
+		USER.uid = list.author 
+		AND STATUS = 1 
+	) AS authorAPPName,
+	sendTime,
+	editorTime,
+	purchaseQuantity,
+	totalLimitNumber,
+	personLimitNumber,(
+	SELECT NAME 
+	FROM
+		app_products_buy_type AS buy 
+	WHERE
+		buy.id = list.purchaseType 
+		AND STATUS = 1 
+		) AS purchaseType,(
+	SELECT
+		title 
+	FROM
+		app_products_buy_type AS buy 
+	WHERE
+		buy.id = list.purchaseType 
+		AND STATUS = 1 
+		) AS purchaseTypeName,(
+	SELECT NAME 
+	FROM
+		products_type AS proType 
+	WHERE
+		proType.id = list.type 
+		AND STATUS = 1 
+		) AS type,(
+	SELECT
+		title 
+	FROM
+		products_type AS proType 
+	WHERE
+		proType.id = list.type 
+		AND STATUS = 1 
+	) AS typeName ,(
+	SELECT
+		name 
+	FROM
+		carbon_user_type AS authorType 
+	WHERE
+		authorType.id = list.authorType 
+		AND STATUS = 1 
+	) AS authorType ,(
+	SELECT
+		title 
+	FROM
+		carbon_user_type AS authorType 
+	WHERE
+		authorType.id = list.authorType 
+		AND STATUS = 1 
+	) AS authorTypeName
+FROM
+	app_products_list AS list 
+WHERE
+	STATUS = 1 AND uid = ${uid}`;
+    db.query(sql, (err, result) => {
+      if (err) {
+        res.send({ code: err.code, message: err.message.split(":")[0] });
+        return;
+      }
+      let data = result[0];
+      !data.authorAdminName
+        ? (data.authorName = data.authorAPPName)
+        : (data.authorName = data.authorAdminName);
+      delete data.authorAdminName;
+      delete data.authorAPPName;
+      data.personLimitNumber = !data.personLimitNumber
+        ? false
+        : data.personLimitNumber;
+      data.totalLimitNumber = !data.totalLimitNumber
+        ? false
+        : data.totalLimitNumber;
+      res.send({ code: 200, message: "success", data: result });
+    });
+  },
+  /**
+   * @author 李贺辰
+   * @version 1.0.0
+   * @description 获取APP单个用户信息
+   * @param {String} uid 用户uid
+   * @param {Object} res 接口数据返回方法
+   */
+  GetOneAppUserData(uid, res) {
+    let sql = `SELECT uid,id,userAccount AS phone,userName,level,userAvatar,userEmail,idCard FROM app_user_list WHERE status = 1 AND uid = ${uid};`;
+    db.query(sql, (err, result) => {
+      if (err) {
+        res.send({ code: err.code, message: err.message.split(":")[0] });
+        return;
+      }
+      let data = result[0];
+      data.idCard = !data.idCard ? false : true;
+      data.userEmail = !data.userEmail ? false : data.userEmail;
+      res.send({ code: 200, message: "success", data: data });
     });
   },
 };

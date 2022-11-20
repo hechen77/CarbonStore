@@ -157,4 +157,22 @@ router.post("/app/products/list/search", function (req, res) {
   );
 });
 
+/**
+ * @author 李贺辰
+ * @version 1.0.0
+ * @description 获取单个商品信息
+ */
+router.post("/get/one/products/information", function (req, res) {
+  appSetting.GetOneProductsInfo(`"${req.body.uid}"`, res);
+});
+
+/**
+ * @author 李贺辰
+ * @version 1.0.0
+ * @description 获取单个APP用户信息
+ */
+router.post("/get/one/app/user/information", function (req, res) {
+  appSetting.GetOneAppUserData(`"${req.body.uid}"`, res);
+});
+
 export default router;
