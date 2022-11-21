@@ -173,9 +173,9 @@
 						<view class="productsTitle">{{item.name}}</view>
 						<view class="productsPriceView">
 							<u-tag v-if="item.typeName != '回收'" text="售卖" plain size="mini" type="warning"
-								style="width: 23%;text-align:center !important;float: left;"></u-tag>
+								style="width: 30%;text-align:center !important;float: left;"></u-tag>
 							<u-tag v-else text="回收" plain size="mini" type="success"
-								style="width: 23%;text-align:center !important;float: left;">
+								style="width: 30%;text-align:center !important;float: left;">
 							</u-tag>
 							<span class="money" v-if="item.purchaseTypeName != '碳值兑换'">￥</span>
 							<span class="productPrice">
@@ -204,7 +204,10 @@
 		},
 		methods: {
 			goProductPage(uid) {
-				console.log(uid);
+				uni.navigateTo({
+					url: `/pages/productsInfo/productsInfo?uid=${uid}`,
+
+				})
 			}
 		},
 		mounted() {
