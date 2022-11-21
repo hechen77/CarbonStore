@@ -12,17 +12,18 @@ var adminSet = {
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
-      }
-      sql = ``;
-      for (let i in result) {
-        sql += `SELECT id,name,title,path,icon FROM admin_aside_list WHERE status = 1 AND parentId = "${result[i].id}"; `;
-      }
-      addChild(sql).then((newRes) => {
-        for (let i in newRes) {
-          result[i].child = newRes[i].length == 0 ? false : newRes[i];
+      } else if (result.length != 0) {
+        sql = ``;
+        for (let i in result) {
+          sql += `SELECT id,name,title,path,icon FROM admin_aside_list WHERE status = 1 AND parentId = "${result[i].id}"; `;
         }
-        res.send({ code: 200, message: "success", data: result });
-      });
+        addChild(sql).then((newRes) => {
+          for (let i in newRes) {
+            result[i].child = newRes[i].length == 0 ? false : newRes[i];
+          }
+          res.send({ code: 200, message: "success", data: result });
+        });
+      }
     });
   },
   GetAdminUserData(res, userAccount) {
@@ -31,8 +32,9 @@ var adminSet = {
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        res.send({ code: 200, message: "success", data: result[0] });
       }
-      res.send({ code: 200, message: "success", data: result[0] });
     });
   },
   GetAllAppProductsList(res, nowPage, pageLimit) {
@@ -118,18 +120,21 @@ WHERE
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        db.query(
+          "SELECT count(*) AS listNum FROM app_products_list WHERE status = 1",
+          (err1, result1) => {
+            if (result.length != 0) {
+              res.send({
+                code: 200,
+                message: "success",
+                listNum: result1[0].listNum,
+                data: result,
+              });
+            }
+          }
+        );
       }
-      db.query(
-        "SELECT count(*) AS listNum FROM app_products_list WHERE status = 1",
-        (err1, result1) => {
-          res.send({
-            code: 200,
-            message: "success",
-            listNum: result1[0].listNum,
-            data: result,
-          });
-        }
-      );
     });
   },
   GetCarbonUserType(res) {
@@ -138,8 +143,9 @@ WHERE
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        res.send({ code: 200, message: "success", data: result });
       }
-      res.send({ code: 200, message: "success", data: result });
     });
   },
   GetProductBuyType(res) {
@@ -148,8 +154,9 @@ WHERE
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        res.send({ code: 200, message: "success", data: result });
       }
-      res.send({ code: 200, message: "success", data: result });
     });
   },
   GetProductType(res) {
@@ -158,8 +165,9 @@ WHERE
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        res.send({ code: 200, message: "success", data: result });
       }
-      res.send({ code: 200, message: "success", data: result });
     });
   },
   /**
@@ -252,18 +260,19 @@ WHERE
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        db.query(
+          `SELECT count(*) AS listNum FROM app_products_list WHERE status = 1 ${data};`,
+          (err1, result1) => {
+            res.send({
+              code: 200,
+              message: "success",
+              listNum: result1[0].listNum,
+              data: result,
+            });
+          }
+        );
       }
-      db.query(
-        `SELECT count(*) AS listNum FROM app_products_list WHERE status = 1 ${data};`,
-        (err1, result1) => {
-          res.send({
-            code: 200,
-            message: "success",
-            listNum: result1[0].listNum,
-            data: result,
-          });
-        }
-      );
     });
   },
   GetCarbonUserList(res) {
@@ -273,9 +282,10 @@ WHERE
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        result = result[0].concat(result[1]);
+        res.send({ code: 200, message: "success", data: result });
       }
-      result = result[0].concat(result[1]);
-      res.send({ code: 200, message: "success", data: result });
     });
   },
 };

@@ -14,12 +14,13 @@ var appSetting = {
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        res.send({
+          code: 200,
+          message: "success",
+          data: JSON.parse(result[0].json),
+        });
       }
-      res.send({
-        code: 200,
-        message: "success",
-        data: JSON.parse(result[0].json),
-      });
     });
   },
   AdminGetAppSetting: function (type, res) {
@@ -29,12 +30,13 @@ var appSetting = {
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        res.send({
+          code: 200,
+          message: "success",
+          data: result,
+        });
       }
-      res.send({
-        code: 200,
-        message: "success",
-        data: result,
-      });
     });
   },
   /**
@@ -77,8 +79,9 @@ var appSetting = {
           if (err) {
             res.send({ code: err.code, message: err.message.split(":")[0] });
             return;
+          } else if (result.length != 0) {
+            res.send({ code: 200, message: "success", data: result });
           }
-          res.send({ code: 200, message: "success", data: result });
         });
       }
     });
@@ -99,12 +102,13 @@ var appSetting = {
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        res.send({
+          code: 200,
+          message: "success",
+          data: JSON.parse(result[0].json),
+        });
       }
-      res.send({
-        code: 200,
-        message: "success",
-        data: JSON.parse(result[0].json),
-      });
     });
   },
   /**
@@ -119,8 +123,9 @@ var appSetting = {
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        res.send({ code: 200, message: "success", data: result });
       }
-      res.send({ code: 200, message: "success", data: result });
     });
   },
   /**
@@ -217,20 +222,22 @@ WHERE
           message: err.message.split(":")[0],
         });
         return;
+      } else if (result.length != 0) {
+        let data = result[0];
+        !data.authorAdminName
+          ? (data.authorName = data.authorAPPName)
+          : (data.authorName = data.authorAdminName);
+        delete data.authorAdminName;
+        delete data.authorAPPName;
+        data.personLimitNumber = !data.personLimitNumber
+          ? false
+          : data.personLimitNumber;
+        data.totalLimitNumber = !data.totalLimitNumber
+          ? false
+          : data.totalLimitNumber;
+        data.imgUrl = data.imgUrl.split(",");
+        res.send({ code: 200, message: "success", data: result[0] });
       }
-      let data = result[0];
-      !data.authorAdminName
-        ? (data.authorName = data.authorAPPName)
-        : (data.authorName = data.authorAdminName);
-      delete data.authorAdminName;
-      delete data.authorAPPName;
-      data.personLimitNumber = !data.personLimitNumber
-        ? false
-        : data.personLimitNumber;
-      data.totalLimitNumber = !data.totalLimitNumber
-        ? false
-        : data.totalLimitNumber;
-      res.send({ code: 200, message: "success", data: result[0] });
     });
   },
   /**
@@ -246,8 +253,9 @@ WHERE
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        res.send({ code: 200, message: "success", data: result[0] });
       }
-      res.send({ code: 200, message: "success", data: result[0] });
     });
   },
   /**
@@ -263,11 +271,12 @@ WHERE
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        let data = result[0];
+        data.idCard = !data.idCard ? false : true;
+        data.userEmail = !data.userEmail ? false : data.userEmail;
+        res.send({ code: 200, message: "success", data: data });
       }
-      let data = result[0];
-      data.idCard = !data.idCard ? false : true;
-      data.userEmail = !data.userEmail ? false : data.userEmail;
-      res.send({ code: 200, message: "success", data: data });
     });
   },
 };

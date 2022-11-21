@@ -109,10 +109,11 @@ var user = {
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        res
+          .status(200)
+          .send({ code: 200, message: "success", data: result[0].value });
       }
-      res
-        .status(200)
-        .send({ code: 200, message: "success", data: result[0].value });
     });
   },
 
@@ -130,12 +131,13 @@ var user = {
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
+      } else if (result.length != 0) {
+        res.send({
+          code: 200,
+          message: "success",
+          data: JSON.parse(result[0].json),
+        });
       }
-      res.send({
-        code: 200,
-        message: "success",
-        data: JSON.parse(result[0].json),
-      });
     });
   },
 };
