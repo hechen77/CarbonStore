@@ -8,7 +8,6 @@
 		<u-back-top :scroll-top="scrollTop" top="240"></u-back-top>
 	</view>
 </template>
-
 <script>
 	import HomeSwiper from "@/components/indexPage/HomeSwiper.vue";
 	import modulesInlet from "@/components/indexPage/modulesInlet.vue";
@@ -26,13 +25,7 @@
 		onPageScroll(e) {
 			this.scrollTop = e.scrollTop;
 		},
-		methods: {
-			goLogin() {
-				uni.reLaunch({
-					url: "/pages/userLogin/userLogin"
-				})
-			},
-		},
+		methods: {},
 		components: {
 			HomeSwiper,
 			modulesInlet,

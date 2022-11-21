@@ -11,7 +11,6 @@ var appSetting = {
     type = '"' + type + '"';
     var sqlStr = `SELECT JSON_OBJECTAGG(name, value) AS json FROM app_power_set WHERE type = (SELECT id FROM app_set_types WHERE name = ${type});`;
     db.query(sqlStr, (err, result) => {
-      console.log(result[0].json);
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
@@ -211,8 +210,12 @@ FROM
 WHERE
 	STATUS = 1 AND uid = ${uid}`;
     db.query(sql, (err, result) => {
-      if (err) {
-        res.send({ code: err.code, message: err.message.split(":")[0] });
+      if (err || !result.length) {
+        err ? err : (err = { code: 401, message: "数据读取失败！" });
+        res.send({
+          code: err.code,
+          message: err.message.split(":")[0],
+        });
         return;
       }
       let data = result[0];
@@ -227,7 +230,24 @@ WHERE
       data.totalLimitNumber = !data.totalLimitNumber
         ? false
         : data.totalLimitNumber;
-      res.send({ code: 200, message: "success", data: result });
+      res.send({ code: 200, message: "success", data: result[0] });
+    });
+  },
+  /**
+   * @author 李贺辰
+   * @version 1.0.0
+   * @description 管理系统获取单个商品信息
+   * @param {Object} res 接口数据返回方法
+   * @param {String} uid 商品uid标识
+   */
+  AdminGetOneProductsInfo(res, uid) {
+    let sql = `SELECT * FROM app_products_list WHERE status = 1 AND uid = ${uid};`;
+    db.query(sql, (err, result) => {
+      if (err) {
+        res.send({ code: err.code, message: err.message.split(":")[0] });
+        return;
+      }
+      res.send({ code: 200, message: "success", data: result[0] });
     });
   },
   /**

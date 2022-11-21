@@ -187,7 +187,7 @@
 				</u-col>
 			</u-row>
 		</view>
-		<u-empty v-show=" !AppProductsList.length" mode="list" text="暂无商品"
+		<u-empty v-show="!AppProductsList.length" mode="list" text="暂无商品"
 			icon="http://cdn.uviewui.com/uview/empty/list.png">
 		</u-empty>
 	</view>

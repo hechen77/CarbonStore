@@ -175,4 +175,14 @@ router.post("/get/one/app/user/information", function (req, res) {
   appSetting.GetOneAppUserData(`"${req.body.uid}"`, res);
 });
 
+/**
+ * @author 李贺辰
+ * @version 1.0.0
+ * @description 管理系统获取单个商品信息
+ * @api private /api/admin/get/one/product/info
+ */
+router.post("/admin/get/one/product/info", function (req, res) {
+  appSetting.AdminGetOneProductsInfo(res, `"${req.body.uid}"`);
+});
+
 export default router;

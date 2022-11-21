@@ -6,12 +6,14 @@ Vue.use(Vuex)
 import userLogin from "@/store/modules/userLogin";
 import homePage from "@/store/modules/HomePage.js";
 import user from "@/store/modules/user.js";
+import peopleCenter from "@/store/modules/peopleCenter.js"
 
 export default new Vuex.Store({
 	modules: {
 		userLogin,
 		homePage,
-		user
+		user,
+		peopleCenter
 	}
 
 })

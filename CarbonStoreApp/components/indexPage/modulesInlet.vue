@@ -18,7 +18,9 @@
 	export default {
 		name: "modulesInlet",
 		data() {
-			return {}
+			return {
+
+			}
 		},
 		methods: {
 			goPage(pageUrl) {

@@ -1,5 +1,6 @@
 import {
-	baseUrl
+	baseUrl,
+	loginStatus
 } from "@/config/config.js";
 import moment from "moment";
 export default {
@@ -25,6 +26,9 @@ export default {
 		},
 		SET_AppProductsList(state, data) {
 			state.AppProductsList = data;
+		},
+		SET_swiperList(state, data) {
+			state.swiperList = data;
 		}
 	},
 	actions: {
@@ -36,6 +40,7 @@ export default {
 					"authorization": uni.getStorageSync("token")
 				},
 				success: res => {
+					loginStatus.goLogin(res.data.code, res.data.message);
 					if (res.data.code == 200) {
 						context.commit("HomeSwiperSetGet", res.data.data);
 					}
@@ -50,6 +55,7 @@ export default {
 					"authorization": uni.getStorageSync("token")
 				},
 				success: res => {
+					loginStatus.goLogin(res.data.code, res.data.message);
 					if (res.data.code == 200) {
 						context.commit("HomeSwiperListGet", res.data.data);
 					}
@@ -60,7 +66,11 @@ export default {
 			uni.request({
 				url: `${baseUrl}/api/home/modules/inlet/list`,
 				method: "GET",
+				header: {
+					"authorization": uni.getStorageSync("token")
+				},
 				success: res => {
+					loginStatus.goLogin(res.data.code, res.data.message);
 					res = res.data;
 					if (res.code == 200) {
 						context.commit("SET_HomePageModulesInletList", res.data);
@@ -72,7 +82,11 @@ export default {
 		async getAppProductsLiat(context) {
 			uni.request({
 				url: `${baseUrl}/api/app/products/list?limit=2&nowPage=1`,
+				header: {
+					"authorization": uni.getStorageSync("token")
+				},
 				success: res => {
+					loginStatus.goLogin(res.data.code, res.data.message);
 					res = res.data;
 					let data = res.data;
 					if (res.code == 200) {
@@ -95,7 +109,7 @@ export default {
 					}
 				}
 			})
-		}
+		},
 	},
 	getters: {}
 }

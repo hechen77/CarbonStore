@@ -21,11 +21,11 @@ app.use(express.urlencoded({ extended: true, limit: "2048mb" }));
 app.use(cookieParser());
 app.use("/static", express.static("public"));
 // todo 上线或测试登录功能是务必改回/app/api
-app.use("/app/abcdef", function (req, res, next) {
+app.use("/app/apppp", function (req, res, next) {
   const token = req.headers.authorization;
   jwt.verify(token, secretKey, (err, decode) => {
     if (err) {
-      res.send({ code: 401, message: "身份验证过期，请重新登陆！" });
+      res.send({ code: 808, message: "身份验证过期，请重新登陆！" });
     } else {
       next();
     }
