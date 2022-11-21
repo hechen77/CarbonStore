@@ -1,25 +1,23 @@
 <template>
-	
 	<veiw>
-		<u-swiper
-	           :list="list1"
-	   ></u-swiper>
+		<u-swiper :list="AppProductsInfo.imgUrl" :indicator="true" :circular="true" imgMode="widthFix" height="50vh"
+			catorMode="dot">
+		</u-swiper>
 	</veiw>
 </template>
 
 <script>
+	import {
+		mapState
+	} from "vuex"
 	export default {
-	        data() {
-	            return {
-	                list1: [
-	                    'https://cdn.uviewui.com/uview/swiper/swiper1.png',
-						'https://cdn.uviewui.com/uview/swiper/swiper2.png',
-						'https://cdn.uviewui.com/uview/swiper/swiper3.png',
-						
-	                ]
-	            }
-	        }
-	    }
+		data() {
+			return {}
+		},
+		computed: {
+			...mapState("productsInfo", ["AppProductsInfo"])
+		}
+	}
 </script>
 
 <style>

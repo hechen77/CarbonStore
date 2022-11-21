@@ -1,23 +1,64 @@
 <template>
 	<view class="ProductsInfoView">
-		<u--text mode="price" text="72"></u--text>
-		
-		<u--text  text="商品信息"></u--text>
+		<view class="productsBriefly">
+			<u-row gutter="30">
+				<u-col span="6">
+					<view class="productsPrice">
+						<span class="money" v-if="AppProductsInfo.purchaseTypeName != '碳值兑换'">￥&nbsp;</span>
+						<span class="price">
+							{{AppProductsInfo.price}}
+						</span>
+						<span class="carbonCredits" v-if="AppProductsInfo.purchaseTypeName == '碳值兑换'">碳值</span>
+					</view>
+				</u-col>
+			</u-row>
+		</view>
+		<view class="productPurchaseQuantity">
 
-		
+		</view>
 	</view>
 </template>
 
 <script>
-	export default{
-		name:"ProductsInfoView",
-		data(){
-			return{ };
+	import {
+		mapState
+	} from "vuex"
+	export default {
+		name: "ProductsInfoView",
+		data() {
+			return {};
+		},
+		computed: {
+			...mapState("productsInfo", ["AppProductsInfo"])
 		}
-		
+
 	}
 </script>
 
-<style>
-	
+<style scoped lang="less">
+	.ProductsInfoView {
+		.productsBriefly {
+			box-sizing: border-box;
+			padding: 0 10px;
+
+			.productsPrice {
+				.money {
+					font-size: 16px;
+				}
+
+				.price {
+					font-size: 20px;
+					color: #f4261b;
+					font-weight: bold;
+				}
+
+				.carbonCredits {
+					font-size: 14px;
+					color: #9a9a9a;
+					margin-left: 5px;
+				}
+			}
+
+		}
+	}
 </style>

@@ -275,6 +275,11 @@ WHERE
       }
     });
   },
+  /**
+   * @author 李贺辰
+   * @version 1.0.0
+   * @description 获取管理员以及APP用户列表
+   */
   GetCarbonUserList(res) {
     let sql =
       "SELECT uid,userName,'管理员' AS userType FROM admin_user_list WHERE status = 1;SELECT uid,userName,'APP用户' AS userType FROM app_user_list WHERE status = 1;";

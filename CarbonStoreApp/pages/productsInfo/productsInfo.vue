@@ -1,7 +1,6 @@
 <template>
 	<view class="ProductsInfomationView">
 		<navigationbar />
-		<br />
 		<carouselmap />
 		<br />
 		<productdescription />
@@ -13,51 +12,41 @@
 	</view>
 </template>
 <script>
-	import navigationbar from"@/components/productsInfo/navigationbar.vue"
-	import carouselmap from"@/components/productsInfo/carouselmap.vue"
-	import productdescription from"@/components/productsInfo/productdescription.vue"
-	import productimages from"@/components/productsInfo/productimages.vue"
-	import buttongroup from"@/components/productsInfo/buttongroup.vue"
+	import {
+		mapState
+	} from "vuex"
+	import navigationbar from "@/components/productsInfo/navigationbar.vue"
+	import carouselmap from "@/components/productsInfo/carouselmap.vue"
+	import productdescription from "@/components/productsInfo/productdescription.vue"
+	import productimages from "@/components/productsInfo/productimages.vue"
+	import buttongroup from "@/components/productsInfo/buttongroup.vue"
 	export default {
 		data() {
 			return {
-
+				uid: "",
 			};
 		},
-		components:{
-			navigationbar,			
+		onLoad(option) {
+			this.uid = option.uid
+			this.$store.dispatch("productsInfo/GetAppProductsInfo", option.uid)
+		},
+		components: {
+			navigationbar,
 			carouselmap,
 			productdescription,
 			productimages,
 			buttongroup,
+		},
+		mounted() {},
+		computed: {
+			...mapState("productsInfo", ["AppProductsInfo"])
 		}
 	}
-	import {
-		mapState
-	} from "vuex"
-	export default { 
-		data(){
-			return {
-				
-			}
-		},
-		methods: {
-		
-	},
-	computed:{
-		...mapState("peopleCenter", ["swiperSettings"])
-	},
-	mounted() {
-		this.$store
-	}
-}
-	
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 	.ProductsInfomationView {
 		width: 100%;
 		height: 100vh;
-		
-		 }
+	}
 </style>

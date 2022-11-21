@@ -30,7 +30,7 @@
 			}
 		},
 		mounted() {
-			this.$store.dispatch("homePage/getHomePageModulesInletList");
+			this.$store.dispatch("homePage/getHomePageModulesInletList", this.uid);
 		},
 		computed: {
 			...mapState("homePage", ['HomePageModulesInletList'])
