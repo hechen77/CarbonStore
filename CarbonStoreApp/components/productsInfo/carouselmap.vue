@@ -1,6 +1,6 @@
 <template>
 	<veiw>
-		<u-swiper :list="AppProductsInfo.imgUrl" :indicator="true" :circular="true" imgMode="widthFix" height="50vh"
+		<u-swiper :list="AppProductsInfo.imgUrl" :indicator="true" :circular="true" imgMode="widthFix" height="35vh"
 			catorMode="dot">
 		</u-swiper>
 	</veiw>
