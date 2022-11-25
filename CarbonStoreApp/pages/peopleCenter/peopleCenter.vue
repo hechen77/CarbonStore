@@ -1,6 +1,6 @@
 <template>
 	<view class="PeopleCenterView">
-		<avatar />
+		<avatar  />
 		<br />
 		<MyOrders />
 		<br />
@@ -19,7 +19,6 @@
 	export default {
 		data() {
 			return {
-				scrollTop: 0
 			}
 		},
 		methods: {

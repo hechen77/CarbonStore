@@ -1,5 +1,5 @@
 <template>
-	<view class="PeopleCenterAvatarModulesView">
+	<view class="PeopleCenterAvatarModulesView" @click="goUserDataSettings">
 		<view class="AvatarContentView">
 			<u-row justify="space-between" gutter="30">
 				<u-col span="2">
@@ -14,9 +14,9 @@
 </template>
 
 <script>
-	 import {
-	  mapState
-	 } from "vuex"
+	import {
+		mapState
+	} from "vuex"
 	export default {
 		data() {
 			return {
@@ -25,9 +25,14 @@
 		},
 		methods: {
 
+			goUserDataSettings() {
+				uni.navigateTo({
+					url: "/pages/UserDataSettings/PeopleCenterAvatarModules"
+				})
+			}
 		},
-		computed:{
-			...mapState("peopleCenter",["UserInfo"])
+		computed: {
+			...mapState("peopleCenter", ["UserInfo"])
 		}
 	}
 </script>
@@ -38,6 +43,7 @@
 		background-color: #ffffff;
 		width: 100%;
 		background-color: white;
+
 		.AvatarContentView {
 			box-sizing: border-box;
 			padding: 10px;

@@ -48,6 +48,12 @@
 				"navigationStyle": "custom"
 			}
 
+		}, {
+			"path": "pages/UserDataSettings/PeopleCenterAvatarModules",
+			"style": {
+				"navigationStyle": "custom"
+			}
+
 		}
 	],
 	"globalStyle": {},
