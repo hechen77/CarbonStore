@@ -301,6 +301,24 @@ WHERE
    * @param {string} uid 商品标识
    */
   SetOneProducts(res, data, uid) {},
+  /**
+   * @author 李贺辰
+   * @version 1.0.0
+   * @description 获取用户交易记录
+   * @param {Object} res 接口数据返回方法
+   * @param {string} uid 用户uid
+   */
+  GetAppUserCarbonTransaction(res, uid) {
+    let sql = `SELECT id,beforeUser,(SELECT userName FROM app_user_list WHERE status = 1 AND uid = tarde.beforeUser) AS beforeUserName,(SELECT userAvatar FROM app_user_list WHERE status = 1 AND uid = tarde.beforeUser) AS beforeUserAvatar,afterUser,(SELECT userName FROM app_user_list WHERE status = 1 AND uid = tarde.afterUser) AS afterUserName,(SELECT userAvatar FROM app_user_list WHERE status = 1 AND uid = tarde.afterUser) AS afterUserAvatar,editorTime,beforeData,afterData,operateData,(SELECT name FROM app_carbon_trade_manner WHERE status = 1 AND id = tarde.operateType) AS operateType,(SELECT title FROM app_carbon_trade_manner WHERE status = 1 AND id = tarde.operateType) AS operateTypeName FROM app_carbon_tarde AS tarde WHERE beforeUser = ${uid} OR afterUser = ${uid} ORDER BY tarde.editorTime DESC;`;
+    db.query(sql, (err, result) => {
+      if (err) {
+        res.send({ code: err.code, message: err.message.split(":")[0] });
+        return;
+      } else if (result.length) {
+        res.send({ code: 200, message: "success", data: result });
+      }
+    });
+  },
 };
 
 function addChild(sql) {

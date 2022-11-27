@@ -64,15 +64,6 @@ router.get("/home/swiper/setting", function (req, res) {
 /**
  * @author 李贺辰
  * @version 1.0.0
- * @description 文件上传
- */
-router.post("/admin/file/upload", function (req, res) {
-  console.log(req.files);
-});
-
-/**
- * @author 李贺辰
- * @version 1.0.0
  * @description 获取APP首页模块入口列表
  */
 router.get("/home/modules/inlet/list", function (req, res) {
@@ -188,6 +179,15 @@ router.post("/admin/get/one/product/info", function (req, res) {
 router.put("/admin/set/product/data", function (req, res) {
   console.log(req.body);
   adminSet.SetOneProducts(res, req.body.data, req.body.uid);
+});
+
+/**
+ * @author 李贺辰
+ * @version 1.0.0
+ * @description 获取用户交易记录
+ */
+router.post("/user/carbon/tarde/list", function (req, res) {
+  adminSet.GetAppUserCarbonTransaction(res, `"${req.body.uid}"`);
 });
 
 export default router;
