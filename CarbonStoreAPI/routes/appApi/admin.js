@@ -29,6 +29,7 @@ var adminSet = {
   GetAdminUserData(res, userAccount) {
     var sql = `SELECT userAccount,avatarUrl AS userAvatar,userName FROM admin_user_list WHERE userAccount = '${userAccount}'AND status  = 1;`;
     db.query(sql, (err, result) => {
+      console.log(result, sql);
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
@@ -255,24 +256,22 @@ WHERE
 FROM
 	app_products_list AS list 
 WHERE
-	STATUS = 1 ${data} ORDER BY sendTime DESC limit ${nowPage},${pageLimit};`;
+	STATUS = 1 ${data} ORDER BY sendTime DESC ;`;
     db.query(sql, (err, result) => {
       if (err) {
         res.send({ code: err.code, message: err.message.split(":")[0] });
-        return;
-      } else if (result.length != 0) {
-        db.query(
-          `SELECT count(*) AS listNum FROM app_products_list WHERE status = 1 ${data};`,
-          (err1, result1) => {
-            res.send({
-              code: 200,
-              message: "success",
-              listNum: result1[0].listNum,
-              data: result,
-            });
-          }
-        );
       }
+      db.query(
+        `SELECT count(*) AS listNum FROM app_products_list WHERE status = 1 ${data};`,
+        (err1, result1) => {
+          res.send({
+            code: 200,
+            message: "success",
+            listNum: result1[0].listNum,
+            data: result,
+          });
+        }
+      );
     });
   },
   /**
@@ -293,6 +292,15 @@ WHERE
       }
     });
   },
+  /**
+   * @author 李贺辰
+   * @version 1.0.0
+   * @description 设置商品信息
+   * @param {Object} res 接口数据返回方法
+   * @param {JSON} data 所需设置的数据
+   * @param {string} uid 商品标识
+   */
+  SetOneProducts(res, data, uid) {},
 };
 
 function addChild(sql) {

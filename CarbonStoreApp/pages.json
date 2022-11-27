@@ -53,6 +53,33 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/firewood/childPage/MyBalance/MyBalance",
+			"style": {
+				"navigationBarTitleText": "我的余额",
+				"navigationBarBackgroundColor": "#1bbe6d"
+			}
+
+		}, {
+			"path": "pages/firewood/childPage/BalanceDetails/BalanceDetails",
+			"style": {
+				"navigationBarTitleText": "交易详情",
+				"navigationBarBackgroundColor": "#1bbe6d"
+			}
+
+		}, {
+			"path": "pages/firewood/childPage/BalanceWithdrawalRecord/BalanceWithdrawalRecord",
+			"style": {
+				"navigationBarTitleText": "提现记录",
+				"navigationBarBackgroundColor": "#1bbe6d"
+			}
+
+		}, {
+			"path": "pages/firewood/childPage/BalanceWithdrawal/BalanceWithdrawal",
+			"style": {
+				"navigationBarTitleText": "余额提现",
+				"navigationBarBackgroundColor": "#1bbe6d"
+			}
 
 		}
 	],

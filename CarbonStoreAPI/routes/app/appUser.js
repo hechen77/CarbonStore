@@ -16,8 +16,10 @@ var user = {
    * @version 1.0.0
    * */
   UserLogin: function (phoneNumber, password, res) {
-    var str = `SELECT uid,id,userAccount,userName,password,level,userAvatar,userEmail,idCard FROM app_user_list WHERE userAccount = ${phoneNumber} AND status = 1`;
+    var str = `SELECT * FROM app_user_list WHERE userAccount = ${phoneNumber} AND status = 1`;
     db.query(str, (err, result) => {
+      console.log(result);
+      9;
       result = result[0];
       if (err) {
         res.send(err);

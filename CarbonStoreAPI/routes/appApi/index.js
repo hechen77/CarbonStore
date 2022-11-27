@@ -147,14 +147,7 @@ router.post("/app/products/list/search", function (req, res) {
     ? (conditions += ` AND purchaseType = "${data.purchaseTypeName}"`)
     : null;
   data.authorName ? (conditions += ` AND author = "${data.authorName}"`) : null;
-  let pageLimit = data.limit,
-    nowPage = data.nowPage;
-  adminSet.GetAppProductsSearchList(
-    res,
-    conditions,
-    pageLimit,
-    (nowPage - 1) * pageLimit
-  );
+  adminSet.GetAppProductsSearchList(res, conditions, 1, (2 - 1) * 1);
 });
 
 /**
@@ -183,6 +176,18 @@ router.post("/get/one/app/user/information", function (req, res) {
  */
 router.post("/admin/get/one/product/info", function (req, res) {
   appSetting.AdminGetOneProductsInfo(res, `"${req.body.uid}"`);
+});
+
+/**
+ * @author 李贺辰
+ * @version 1.0.0
+ * @description 设置商品信息
+ * @api private /admin/set/product/data
+ * @method put
+ */
+router.put("/admin/set/product/data", function (req, res) {
+  console.log(req.body);
+  adminSet.SetOneProducts(res, req.body.data, req.body.uid);
 });
 
 export default router;
