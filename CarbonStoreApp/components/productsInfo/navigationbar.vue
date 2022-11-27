@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<u-navbar title="商品详情" :placeholder="true">
+		<u-navbar title="商品详情" @leftClick="goBack" :placeholder="true">
 		</u-navbar>
 	</view>
 </template>
@@ -9,8 +9,11 @@
 	export default {
 		name: "navigationbar",
 		data() {
-			return {
-				bgColor: '#001f3f',
+			return {}
+		},
+		methods: {
+			goBack() {
+				uni.navigateBack()
 			}
 		}
 	}
