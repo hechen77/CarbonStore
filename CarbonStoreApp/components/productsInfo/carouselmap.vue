@@ -1,9 +1,9 @@
 <template>
-	<veiw>
+	<view>
 		<u-swiper :list="AppProductsInfo.imgUrl" :indicator="true" :circular="true" imgMode="widthFix" height="35vh"
 			catorMode="dot">
 		</u-swiper>
-	</veiw>
+	</view>
 </template>
 
 <script>

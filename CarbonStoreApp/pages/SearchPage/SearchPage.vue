@@ -1,17 +1,22 @@
 <template>
 	<view class="pageContent">
-		我是搜索页
+			<u-sticky  offset-Top="0rpx">
+			<SearchBox></SearchBox>
+				</u-sticky>
+			<SearchPage></SearchPage>
 	</view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-
-			};
-		}
-	}
+	import SearchBox from"@/components/store/SearchBox.vue";
+	import SearchPage from"@/components/SearchPage/SearchPage.vue"
+		export default {
+				components: {
+					SearchBox,
+					SearchPage
+					
+				},
+			}
 </script>
 
 <style lang="less">

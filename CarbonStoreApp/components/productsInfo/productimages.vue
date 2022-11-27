@@ -1,7 +1,7 @@
 <template>
-	<veiw>
+	<view>
 		<u--image :showLoading="true" :src="src" width="100%"  mode="widthFix" ></u--image>
-	</veiw>
+	</view>
 	
 </template>
 <script>
