@@ -9,7 +9,6 @@
 							{{AppProductsInfo.price}}
 						</span>
 						<span class="carbonCredits" v-if="AppProductsInfo.purchaseTypeName == '碳值兑换'">碳值</span>
-						
 					</view>
 				</u-col>
 				<u-col span="6">
