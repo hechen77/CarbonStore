@@ -1,12 +1,12 @@
 <template>
-<view>
+	<view @click="goSearchPage">
 		<view class="SearchBoxView">
-		<u-search placeholder="搜索商品" :showAction="false" shape="round" margin="10px"></u-search>
+			<u-search :disabled="true" :showAction="false" shape="round" margin="10px"></u-search>
+		</view>
 	</view>
-</view>
-		
-	
-	
+
+
+
 </template>
 
 <script>
@@ -16,6 +16,13 @@
 			return {
 
 
+			}
+		},
+		methods: {
+			goSearchPage() {
+				uni.navigateTo({
+					url: "/pages/SearchPage/SearchPage"
+				})
 			}
 		}
 	}

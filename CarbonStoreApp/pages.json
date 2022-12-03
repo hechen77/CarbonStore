@@ -40,7 +40,8 @@
 		{
 			"path": "pages/SearchPage/SearchPage",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "商品搜索",
+				"navigationBarBackgroundColor": "#1bbe6d"
 			}
 		}, {
 			"path": "pages/productsInfo/productsInfo",
