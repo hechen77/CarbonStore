@@ -8,6 +8,7 @@ import homePage from "@/store/modules/HomePage.js";
 import user from "@/store/modules/user.js";
 import peopleCenter from "@/store/modules/peopleCenter.js"
 import productsInfo from "@/store/modules/productsInfo.js";
+import FireWood from "@/store/modules/firewood.js"
 
 export default new Vuex.Store({
 	modules: {
@@ -16,6 +17,7 @@ export default new Vuex.Store({
 		user,
 		peopleCenter,
 		productsInfo,
+		FireWood,
 	}
 
 })
