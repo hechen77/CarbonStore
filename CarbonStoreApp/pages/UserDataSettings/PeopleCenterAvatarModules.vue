@@ -15,7 +15,7 @@
 			</view>
 		</view>
 		<view class="OutLogin">
-			<u-button type="primary" shape="circle" text="退出登录"></u-button>
+			<u-button type="primary" shape="circle" @click="goLogout" text="退出登录"></u-button>
 		</view>
 	</view>
 </template>
@@ -24,6 +24,10 @@
 	import {
 		mapState
 	} from "vuex"
+	import {
+		token,
+		loginStatus
+	} from "@/config/config.js"
 	export default {
 		data() {
 			return {
@@ -35,13 +39,20 @@
 		},
 		computed: {
 			...mapState("peopleCenter", ["UserInfo"])
+		},
+		methods: {
+			goLogout() {
+				token.removeToken("token");
+				token.removeToken("roles");
+				loginStatus.isLogin();
+			}
 		}
 	}
 </script>
 
 <style scoped lang="less">
-.OutLogin{
-	width: 600rpx;
-	padding: 40px;
-}
+	.OutLogin {
+		width: 600rpx;
+		padding: 40px;
+	}
 </style>
