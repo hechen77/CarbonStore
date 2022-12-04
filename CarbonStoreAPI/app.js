@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use("/static", express.static("public"));
 app.subscribe("/files", express.static("upload/uploadFiles"));
 // todo 上线或测试登录功能是务必改回/app/api
-app.use("/app/appi", function (req, res, next) {
+app.use("/app/api", function (req, res, next) {
   const token = req.headers.authorization;
   jwt.verify(token, secretKey, (err, decode) => {
     if (err) {
