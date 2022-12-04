@@ -1,10 +1,10 @@
 <template>
 	<view class="CarbonView">
 		<view class="CumulativeCarbonView">
-			<view class="CumulativeCarbonTitle">
+			<view class="CumulativeCarbonTitle" @click="AtClick">
 				累计回收量（kg）
 			</view>
-			<view class="CumulativeCarbonNumber">
+			<view class="CumulativeCarbonNumber" @click="AtClick">
 				{{roles.AllCarbonIntegral}}
 			</view>
 		</view>
@@ -78,6 +78,12 @@
 						url: url
 					});
 				}
+			},
+			AtClick() {
+				uni.showToast({
+					title: "累计回收量被点击",
+					icon: "none"
+				})
 			}
 		},
 		mounted() {
