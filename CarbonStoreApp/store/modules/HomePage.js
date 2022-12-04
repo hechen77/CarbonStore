@@ -81,7 +81,7 @@ export default {
 		},
 		async getAppProductsLiat(context) {
 			uni.request({
-				url: `${baseUrl}/api/app/products/list?limit=2&nowPage=1`,
+				url: `${baseUrl}/api/app/products/list?limit=999999&nowPage=1`,
 				header: {
 					"authorization": uni.getStorageSync("token")
 				},

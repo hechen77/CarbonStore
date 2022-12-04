@@ -1,6 +1,6 @@
 const serverUrl = "http://carbon.hc8.ren/app";
 const localUrl = "http://localhost:3000/app";
-export const baseUrl = localUrl;
+export const baseUrl = serverUrl;
 
 /**
  * @author 李贺辰

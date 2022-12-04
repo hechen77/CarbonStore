@@ -6,8 +6,8 @@
 					@click="goProductPage(item.uid)">
 					<view class="productsView">
 						<view class="productsImage">
-							<u--image :showLoading="true" :src="item.imgUrl[0]" width="100%" height="auto"
-								mode="widthFix" :lazyLoad="false" :fade="false">
+							<u--image :showLoading="true" :src="item.imgUrl[0]" width="100%" height="122px"
+								:lazyLoad="false" :fade="false">
 							</u--image>
 						</view>
 						<view class="productsTitle">{{item.name}}</view>
@@ -16,166 +16,6 @@
 								style="width: 23%;text-align:center !important;float: left;"></u-tag>
 							<u-tag v-else text="回收" plain size="mini" type="success"
 								style="width: 23%;text-align:center !important;float: left;">
-							</u-tag>
-							<span class="money" v-if="item.purchaseTypeName != '碳值兑换'">￥</span>
-							<span class="productPrice">
-								{{item.price}}
-							</span>
-							<span class="carbonCredits" v-if="item.purchaseTypeName == '碳值兑换'">碳值</span>
-						</view>
-					</view>
-					<view class="productsView">
-						<view class="productsImage">
-							<u--image :showLoading="true" :src="item.imgUrl[0]" width="100%" height="auto"
-								mode="widthFix" :lazyLoad="false" :fade="false">
-							</u--image>
-						</view>
-						<view class="productsTitle">{{item.name}}</view>
-						<view class="productsPriceView">
-							<u-tag v-if="item.typeName != '回收'" text="售卖" plain size="mini" type="warning"
-								style="width: 23%;text-align:center !important;float: left;"></u-tag>
-							<u-tag v-else text="回收" plain size="mini" type="success"
-								style="width: 23%;text-align:center !important;float: left;">
-							</u-tag>
-							<span class="money" v-if="item.purchaseTypeName != '碳值兑换'">￥</span>
-							<span class="productPrice">
-								{{item.price}}
-							</span>
-							<span class="carbonCredits" v-if="item.purchaseTypeName == '碳值兑换'">碳值</span>
-						</view>
-					</view>
-					<view class="productsView">
-						<view class="productsImage">
-							<u--image :showLoading="true" :src="item.imgUrl[0]" width="100%" height="auto"
-								mode="widthFix" :lazyLoad="false" :fade="false">
-							</u--image>
-						</view>
-						<view class="productsTitle">{{item.name}}</view>
-						<view class="productsPriceView">
-							<u-tag v-if="item.typeName != '回收'" text="售卖" plain size="mini" type="warning"
-								style="width: 23%;text-align:center !important;float: left;"></u-tag>
-							<u-tag v-else text="回收" plain size="mini" type="success"
-								style="width: 23%;text-align:center !important;float: left;">
-							</u-tag>
-							<span class="money" v-if="item.purchaseTypeName != '碳值兑换'">￥</span>
-							<span class="productPrice">
-								{{item.price}}
-							</span>
-							<span class="carbonCredits" v-if="item.purchaseTypeName == '碳值兑换'">碳值</span>
-						</view>
-					</view>
-					<view class="productsView">
-						<view class="productsImage">
-							<u--image :showLoading="true" :src="item.imgUrl[0]" width="100%" height="auto"
-								mode="widthFix" :lazyLoad="false" :fade="false">
-							</u--image>
-						</view>
-						<view class="productsTitle">{{item.name}}</view>
-						<view class="productsPriceView">
-							<u-tag v-if="item.typeName != '回收'" text="售卖" plain size="mini" type="warning"
-								style="width: 23%;text-align:center !important;float: left;"></u-tag>
-							<u-tag v-else text="回收" plain size="mini" type="success"
-								style="width: 23%;text-align:center !important;float: left;">
-							</u-tag>
-							<span class="money" v-if="item.purchaseTypeName != '碳值兑换'">￥</span>
-							<span class="productPrice">
-								{{item.price}}
-							</span>
-							<span class="carbonCredits" v-if="item.purchaseTypeName == '碳值兑换'">碳值</span>
-						</view>
-					</view>
-					<view class="productsView">
-						<view class="productsImage">
-							<u--image :showLoading="true" :src="item.imgUrl[0]" width="100%" height="auto"
-								mode="widthFix" :lazyLoad="false" :fade="false">
-							</u--image>
-						</view>
-						<view class="productsTitle">{{item.name}}</view>
-						<view class="productsPriceView">
-							<u-tag v-if="item.typeName != '回收'" text="售卖" plain size="mini" type="warning"
-								style="width: 23%;text-align:center !important;float: left;"></u-tag>
-							<u-tag v-else text="回收" plain size="mini" type="success"
-								style="width: 23%;text-align:center !important;float: left;">
-							</u-tag>
-							<span class="money" v-if="item.purchaseTypeName != '碳值兑换'">￥</span>
-							<span class="productPrice">
-								{{item.price}}
-							</span>
-							<span class="carbonCredits" v-if="item.purchaseTypeName == '碳值兑换'">碳值</span>
-						</view>
-					</view>
-					<view class="productsView">
-						<view class="productsImage">
-							<u--image :showLoading="true" :src="item.imgUrl[0]" width="100%" height="auto"
-								mode="widthFix" :lazyLoad="false" :fade="false">
-							</u--image>
-						</view>
-						<view class="productsTitle">{{item.name}}</view>
-						<view class="productsPriceView">
-							<u-tag v-if="item.typeName != '回收'" text="售卖" plain size="mini" type="warning"
-								style="width: 23%;text-align:center !important;float: left;"></u-tag>
-							<u-tag v-else text="回收" plain size="mini" type="success"
-								style="width: 23%;text-align:center !important;float: left;">
-							</u-tag>
-							<span class="money" v-if="item.purchaseTypeName != '碳值兑换'">￥</span>
-							<span class="productPrice">
-								{{item.price}}
-							</span>
-							<span class="carbonCredits" v-if="item.purchaseTypeName == '碳值兑换'">碳值</span>
-						</view>
-					</view>
-					<view class="productsView">
-						<view class="productsImage">
-							<u--image :showLoading="true" :src="item.imgUrl[0]" width="100%" height="auto"
-								mode="widthFix" :lazyLoad="false" :fade="false">
-							</u--image>
-						</view>
-						<view class="productsTitle">{{item.name}}</view>
-						<view class="productsPriceView">
-							<u-tag v-if="item.typeName != '回收'" text="售卖" plain size="mini" type="warning"
-								style="width: 23%;text-align:center !important;float: left;"></u-tag>
-							<u-tag v-else text="回收" plain size="mini" type="success"
-								style="width: 23%;text-align:center !important;float: left;">
-							</u-tag>
-							<span class="money" v-if="item.purchaseTypeName != '碳值兑换'">￥</span>
-							<span class="productPrice">
-								{{item.price}}
-							</span>
-							<span class="carbonCredits" v-if="item.purchaseTypeName == '碳值兑换'">碳值</span>
-						</view>
-					</view>
-					<view class="productsView">
-						<view class="productsImage">
-							<u--image :showLoading="true" :src="item.imgUrl[0]" width="100%" height="auto"
-								mode="widthFix" :lazyLoad="false" :fade="false">
-							</u--image>
-						</view>
-						<view class="productsTitle">{{item.name}}</view>
-						<view class="productsPriceView">
-							<u-tag v-if="item.typeName != '回收'" text="售卖" plain size="mini" type="warning"
-								style="width: 23%;text-align:center !important;float: left;"></u-tag>
-							<u-tag v-else text="回收" plain size="mini" type="success"
-								style="width: 23%;text-align:center !important;float: left;">
-							</u-tag>
-							<span class="money" v-if="item.purchaseTypeName != '碳值兑换'">￥</span>
-							<span class="productPrice">
-								{{item.price}}
-							</span>
-							<span class="carbonCredits" v-if="item.purchaseTypeName == '碳值兑换'">碳值</span>
-						</view>
-					</view>
-					<view class="productsView">
-						<view class="productsImage">
-							<u--image :showLoading="true" :src="item.imgUrl[0]" width="100%" height="auto"
-								mode="widthFix" :lazyLoad="false" :fade="false">
-							</u--image>
-						</view>
-						<view class="productsTitle">{{item.name}}</view>
-						<view class="productsPriceView">
-							<u-tag v-if="item.typeName != '回收'" text="售卖" plain size="mini" type="warning"
-								style="width: 30%;text-align:center !important;float: left;"></u-tag>
-							<u-tag v-else text="回收" plain size="mini" type="success"
-								style="width: 30%;text-align:center !important;float: left;">
 							</u-tag>
 							<span class="money" v-if="item.purchaseTypeName != '碳值兑换'">￥</span>
 							<span class="productPrice">
@@ -244,7 +84,9 @@
 					margin-bottom: 10px;
 
 					.productsImage {
+						min-height: 122px;
 						width: 100%;
+						margin: auto 0;
 						overflow: hidden;
 						height: auto;
 						margin: 0;
