@@ -190,4 +190,8 @@ router.post("/user/carbon/tarde/list", function (req, res) {
   adminSet.GetAppUserCarbonTransaction(res, `"${req.body.uid}"`);
 });
 
+router.get("/app/home/news/list", function (req, res) {
+  adminSet.GetAPPHomePageNewsList(res, 10, 1);
+});
+
 export default router;

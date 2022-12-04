@@ -10,6 +10,7 @@ export default {
 		swiperList: [],
 		HomePageModulesInletList: [],
 		AppProductsList: [],
+		HomePageNewsList: [],
 	},
 	mutations: {
 		HomeSwiperSetGet(state, res) {
@@ -29,6 +30,9 @@ export default {
 		},
 		SET_swiperList(state, data) {
 			state.swiperList = data;
+		},
+		SET_HomePageNewsList(state, data) {
+			state.HomePageNewsList = data;
 		}
 	},
 	actions: {
@@ -110,6 +114,21 @@ export default {
 				}
 			})
 		},
+		async GetHomePageNewsList(context) {
+			uni.request({
+				url: `${baseUrl}/api/app/home/news/list`,
+				header: {
+					"authorization": uni.getStorageSync("token")
+				},
+				success: (res) => {
+					res = res.data;
+					loginStatus.goLogin(res.code, res.message);
+					if (res.code == 200) {
+						context.commit("SET_HomePageNewsList", res.data);
+					}
+				}
+			})
+		}
 	},
 	getters: {}
 }

@@ -1,3 +1,4 @@
+import e from "express";
 import db from "../../database/sql.js";
 var adminSet = {
   /**
@@ -315,6 +316,23 @@ WHERE
         res.send({ code: err.code, message: err.message.split(":")[0] });
         return;
       } else if (result.length) {
+        res.send({ code: 200, message: "success", data: result });
+      }
+    });
+  },
+  /**
+   * @author 李贺辰
+   * @version 1.0.0
+   * @description 获取APP首页新闻列表
+   * @param {Object} res 接口数据返回方法
+   */
+  GetAPPHomePageNewsList(res, limit, nowPage) {
+    let sql = `SELECT * FROM app_news_list WHERE status = 1;`;
+    db.query(sql, (err, result) => {
+      if (err) {
+        res.send({ code: err.code, message: err.message.split(":")[0] });
+        return;
+      } else if (result.length != 0) {
         res.send({ code: 200, message: "success", data: result });
       }
     });

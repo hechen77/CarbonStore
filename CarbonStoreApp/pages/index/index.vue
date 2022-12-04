@@ -4,6 +4,8 @@
 		<br />
 		<modulesInlet />
 		<br />
+		<newsList />
+		<br />
 		<productsList />
 		<u-back-top :scroll-top="scrollTop" top="240"></u-back-top>
 	</view>
@@ -11,7 +13,8 @@
 <script>
 	import HomeSwiper from "@/components/indexPage/HomeSwiper.vue";
 	import modulesInlet from "@/components/indexPage/modulesInlet.vue";
-	import productsList from "@/components/indexPage/productsList.vue"
+	import productsList from "@/components/indexPage/productsList.vue";
+	import newsList from "@/components/indexPage/newsList.vue"
 	import {
 		loginStatus,
 		token,
@@ -29,7 +32,8 @@
 		components: {
 			HomeSwiper,
 			modulesInlet,
-			productsList
+			productsList,
+			newsList
 		},
 		beforeCreate() {
 			if (loginStatus.isLogin()) this.$store.commit("user/SET_ROLES", JSON.parse(token.getToken('roles')));
